@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class ±â´É°³¹ß {
+public class ê¸°ëŠ¥ê°œë°œ {
 
 	public static void main(String[] args) {
 		Solution s = new Solution();
