@@ -1,9 +1,7 @@
-package week01;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ´Ù¸®¸¦Áö³ª´ÂÆ®·° {
+public class ë‹¤ë¦¬ë¥¼ì§€ë‚˜ëŠ”íŠ¸ëŸ­ {
 
 	public static void main(String[] args) {
 		Solution s = new Solution();
@@ -21,13 +19,13 @@ class Solution {
     		Queue<Integer> bridge = new LinkedList<>();
     		Queue<Integer> readyTruck = new LinkedList<>();
     		
-            //ÃÊ±â ´Ù¸® 
+            //ì´ˆê¸° ë‹¤ë¦¬ 
             for(int i = 0 ; i < bridge_length ; i++)
             {
                 bridge.offer(0);
             }
            
-            //´ë±â Æ®·°
+            //ëŒ€ê¸° íŠ¸ëŸ­
             for(int i = 0; i < truck_weights.length; i++) {
             	readyTruck.offer(truck_weights[i]);
             }
