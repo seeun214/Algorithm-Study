@@ -1,6 +1,8 @@
 package august;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 public class DFSBFS_1260 {
 	static int[][] matrix;
@@ -21,26 +23,15 @@ public class DFSBFS_1260 {
 			matrix[a][b] = 1;
 			matrix[b][a] = 1;
 		}
-		
-		for(int i=1; i<matrix.length;i++) { //Çà·Äº¸±â
-			for(int j=1;j<matrix.length;j++) {
-				System.out.print(matrix[i][j]);
-			}
-			System.out.println();
-		}
-		
-        // ±íÀÌ¿ì¼±Å½»ö
 		visited = new boolean[node+1];
 		dfs(start); 
 		
 		System.out.println();
         
-        // ³Êºñ¿ì¼±Å½»ö
 		visited = new boolean[node+1];
 		bfs(start); 
-
-		
 	}
+	
 	public static void dfs(int start) {
 		visited[start] = true;
 		System.out.print(start+ " ");
@@ -54,8 +45,8 @@ public class DFSBFS_1260 {
 				dfs(a);
 			}
 		}
-			
 	}
+	
 	public static void bfs(int start) {
 		Queue<Integer> que = new LinkedList<Integer>(); 
 		
@@ -76,7 +67,4 @@ public class DFSBFS_1260 {
 			}
 		}
 	}
-	
-	
-	
 }
