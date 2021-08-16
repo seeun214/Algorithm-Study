@@ -32,11 +32,17 @@ public class DFSBFS_1260 {
 	
 	public static void dfs(int start) {
 		visited[start] = true;
+		int count = 1;
 		System.out.print(start+ " ");
 		
+		if(count == matrix.length - 1) 
+			return;
+		
 		for(int a = 1; a < matrix.length; a++) {
-			if(matrix[start][a] == 1 && visited[a] == false) {
+			if(matrix[start][a] == 1 && visited[a] == false){
+				count++;
 				dfs(a);
+			
 			}
 		}
 	}
