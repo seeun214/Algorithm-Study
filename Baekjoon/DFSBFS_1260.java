@@ -1,5 +1,3 @@
-package august;
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -17,30 +15,26 @@ public class DFSBFS_1260 {
 		
 		matrix = new int[node+1][node+1];
 		
-		for(int i=1;i<=edge;i++) {
-			int a = scan.nextInt();
-			int b = scan.nextInt();
-			matrix[a][b] = 1;
-			matrix[b][a] = 1;
+		for(int i = 0; i < edge; i++) {
+			int x = scan.nextInt();
+			int y = scan.nextInt();
+			matrix[x][y] = matrix[y][x] = 1;
 		}
+	
 		visited = new boolean[node+1];
 		dfs(start); 
 		
 		System.out.println();
         
 		visited = new boolean[node+1];
-		bfs(start); 
+		bfs(start);
 	}
 	
 	public static void dfs(int start) {
 		visited[start] = true;
 		System.out.print(start+ " ");
 		
-		if(start == matrix.length) {
-			return;
-		}
-
-		for(int a=1;a<matrix.length;a++) {
+		for(int a = 1; a < matrix.length; a++) {
 			if(matrix[start][a] == 1 && visited[a] == false) {
 				dfs(a);
 			}
@@ -55,11 +49,10 @@ public class DFSBFS_1260 {
  		System.out.print(start+ " ");
 		
 		while(!que.isEmpty()) {
-			
-			int temp = que.peek();
+			int check = que.peek();
 			que.poll();
-			for(int i=1; i<matrix.length;i++) {
-				if(matrix[temp][i] ==1 && visited[i] == false) {
+			for(int i = 1; i < matrix.length; i++) {
+				if(matrix[check][i] == 1 && visited[i] == false) {
 					que.add(i);
 					visited[i] = true;
 					System.out.print(i+ " ");
