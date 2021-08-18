@@ -38,10 +38,10 @@ public class DFSBFS_1260 {
 		if(count == matrix.length - 1) 
 			return;
 		
-		for(int a = 1; a < matrix.length; a++) {
-			if(matrix[start][a] == 1 && visited[a] == false){
+		for(int i = 1; i < matrix.length; i++) {
+			if(matrix[start][i] == 1 && visited[i] == false){
 				count++;
-				dfs(a);
+				dfs(i);
 			
 			}
 		}
