@@ -29,8 +29,9 @@ public class Binary_10829 {
 		int mod = 0;
 		Stack<Integer> answer = new Stack<>();
 		
-		for(long i = N; i > 0; i /= 2) {
-			answer.add((int)(i % 2));
+		while(N > 0) {
+			answer.add((int)(N % 2));
+			N /= 2;
 		}
 		
 		while(!answer.isEmpty()) {
