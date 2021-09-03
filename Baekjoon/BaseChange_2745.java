@@ -1,5 +1,3 @@
-package august;
-
 import java.util.Scanner;
 
 public class BaseChange_2745 {

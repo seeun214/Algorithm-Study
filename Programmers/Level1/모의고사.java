@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class 모의고사 {
 
 	public static void main(String[] args) {
@@ -49,4 +48,3 @@ class Solution {
         }
     }
 }
-

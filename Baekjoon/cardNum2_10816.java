@@ -41,5 +41,3 @@ public class cardNum2_10816 {
 		System.out.println(answer);
 	}
 }
-
-
