@@ -1,63 +1,61 @@
-import java.util.Stack;
+import java.util.*;
 
 public class 괄호변환 {
-    public static void main(String[] args) {
-        System.out.println(solution("))((()"));
-    }
-    
-    public static String solution(String p) {
-        if(p.equals(""))
-            return "";
+	public static void main(String[] args) {
+		Solution5 s = new Solution5();
+		String p = ")(";
+		System.out.println(s.solution(p));
 
-        StringBuilder answer = new StringBuilder();
-        StringBuilder sb = new StringBuilder(p);
-        StringBuilder u = new StringBuilder();
-        StringBuilder v = new StringBuilder();
+	}
+} 
 
-        int open =0;    
-        int close=0;  
-        for(int i=0;i<sb.length();i++){
-            if(sb.charAt(i)=='(')
-                open++;
-            if(sb.charAt(i)==')')
-                close++;
-            if(open==close){
-                u.append(sb.substring(0,i+1));
-                v.append(sb.substring(i+1));
-                break;
-            }
-        }
+class Solution5 {
+	int pos;
+	boolean isCorrect(String str) {
+		boolean ret = true;
+		int left = 0, right = 0;
+		Stack<Character> mystack = new Stack<Character>();
 
-        if(isCorrect(u.toString())){
-            return u.append(solution(v.toString())).toString();
-        }
+		for (int i = 0; i < str.length(); ++i) {
+			if (str.charAt(i) == '(') {
+				left++;
+				mystack.push('(');
+			} else {
+				right++;
+				if (mystack.empty())
+					ret = false;
+				else
+					mystack.pop();
+			}
+			// u의 길이, v의 시작위치
+			if (left == right) {
+				pos = i + 1;
+				return ret;
+			}
+		}
+		return true;
+	}
 
-        answer.append("(").append(solution(v.toString())).append(")");
-        u.deleteCharAt(0);
-        u.deleteCharAt(u.length()-1);
-        answer.append(swap(u.toString()));
-        return answer.toString();
-    }
+	public String solution(String p) {
+		if (p.isEmpty())
+			return p;
 
-    public static boolean isCorrect(String p){
-        Stack<String> st = new Stack<>();
-        for(String s:p.split("")){
-			if(s.equals("("))
-                st.push(s);
-            if(s.equals(")") && !st.isEmpty())
-                st.pop();
-        }
-        return st.size() < 1;
-    }
+		boolean correct = isCorrect(p);
+		String u = p.substring(0, pos);
+		String v = p.substring(pos, p.length());
 
-    public static String swap(String u){
-        StringBuilder swapString = new StringBuilder();
-        for(char c : u.toCharArray()){
-            if(c=='(')
-                swapString.append(")");
-            if(c==')')
-                swapString.append("(");
-        }
-        return swapString.toString();
-    }
+		if (correct) {
+			return u + solution(v);
+		}
+		
+		String answer = "(" + solution(v) + ")";
+		for(int i = 1; i < u.length()-1; ++i) {
+			if(u.charAt(i) == '(')
+				answer += ")";
+			else
+				answer += "(";
+		}
+		return answer;
+
+	}
 }
