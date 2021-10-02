@@ -16,15 +16,15 @@ class Solution {
 	public int solution(int[] scoville, int K) {
 		int answer = 0;
 		PriorityQueue<Integer> sco = new PriorityQueue<>();
-		
-		for(Integer s : scoville) {
+
+		for (Integer s : scoville) {
 			sco.offer(s);
 		}
-		
-		while(sco.peek() <= K) {
-			if(sco.size() == 1)
+
+		while (sco.peek() <= K) {
+			if (sco.size() == 1) {
 				return -1;
-			if(sco.peek() <= K) {
+			} else {
 				sco.offer(sco.poll() + (sco.poll() * 2));
 				answer++;
 			}
