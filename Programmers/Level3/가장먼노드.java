@@ -33,7 +33,7 @@ class Solution {
 			for (int i = 0; i < qSize; i++) {
 				int temp = q.poll();
 				for (int j = 0; j < n; j++) {
-					if (check[j] == false && map[j][temp] == true) {
+					if (check[j] == false && map[temp][j] == true) {
 						check[j] = true;
 						q.add(j);
 					}
